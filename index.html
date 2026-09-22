@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camilo Castell | Cyber-Minimalist Software & Web Developer</title>
+    <meta name="description" content="Tarjeta digital y portafolio profesional de Camilo Castell. Software a medida, desarrollo web y sistemas de gestión de alto impacto.">
+    <meta name="keywords" content="Camilo Castell, Soltecma, VetCode, Alqmac, Software Developer, Full-Stack, Cyberpunk Minimalist, Python, JavaScript, SQL">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Camilo Castell | Web & Software Developer">
+    <meta property="og:description" content="Desarrollo de software a medida, arquitectura web e interfaces minimalistas de alto rendimiento.">
+    <meta property="og:type" content="website">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- QR Code Generator JS Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#05070B',
+                            card: '#0B111E',
+                            cyan: '#00F0FF',
+                            violet: '#7000FF',
+                            emerald: '#00FF9D',
+                            border: 'rgba(0, 240, 255, 0.15)'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace']
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 3s infinite alternate',
+                        'float': 'float 6s ease-in-out infinite',
+                        'scanline': 'scanline 8s linear infinite',
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%': { boxShadow: '0 0 10px rgba(0, 240, 255, 0.2), 0 0 20px rgba(112, 0, 255, 0.1)' },
+                            '100%': { boxShadow: '0 0 25px rgba(0, 240, 255, 0.4), 0 0 50px rgba(112, 0, 255, 0.25)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-8px)' }
+                        },
+                        scanline: {
+                            '0%': { transform: 'translateY(-100%)' },
+                            '100%': { transform: 'translateY(1000%)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #05070B;
+            color: #E2E8F0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Futuristic Minimal Glassmorphism */
+        .glass-panel {
+            background: rgba(11, 17, 30, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 240, 255, 0.12);
+        }
+
+        .glass-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.005) 100%);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 240, 255, 0.12);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(0, 240, 255, 0.5);
+            box-shadow: 0 0 20px -5px rgba(0, 240, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #00F0FF 0%, #7000FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-gradient-brand {
+            background: linear-gradient(135deg, #00F0FF 0%, #7000FF 100%);
+        }
+
+        /* HUD & Cyber Decorators */
+        .cyber-corner {
+            position: relative;
+        }
+        .cyber-corner::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            width: 8px;
+            height: 8px;
+            border-top: 2px solid #00F0FF;
+            border-left: 2px solid #00F0FF;
+        }
+        .cyber-corner::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            right: -1px;
+            width: 8px;
+            height: 8px;
+            border-bottom: 2px solid #7000FF;
+            border-right: 2px solid #7000FF;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #05070B;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1E293B;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00F0FF;
+        }
+
+        /* Grid Cyber Background */
+        .bg-grid-pattern {
+            background-size: 32px 32px;
+            background-image: 
+                linear-gradient(to right, rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="relative bg-brand-dark text-gray-100 antialiased bg-grid-pattern selection:bg-brand-cyan selection:text-black">
+
+    <!-- Ambient Glowing Orbs -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div class="absolute -top-40 -left-40 w-96 h-96 bg-brand-cyan/10 rounded-full blur-3xl"></div>
+        <div class="absolute top-1/3 -right-40 w-96 h-96 bg-brand-violet/15 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-40 left-1/3 w-96 h-96 bg-brand-emerald/10 rounded-full blur-3xl"></div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 w-full glass-panel border-b border-brand-border transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-lg bg-gradient-brand p-0.5 flex items-center justify-center transition-transform group-hover:scale-105 shadow-lg shadow-brand-cyan/20">
+                    <div class="w-full h-full bg-brand-dark rounded-[6px] flex items-center justify-center">
+                        <i data-lucide="cpu" class="w-5 h-5 text-brand-cyan"></i>
+                    </div>
+                </div>
+                <div>
+                    <span class="font-display font-bold text-lg tracking-widest text-white uppercase">Camilo<span class="text-brand-cyan">.Castell</span></span>
+                    <span class="block text-[9px] text-brand-cyan font-mono tracking-widest uppercase -mt-1">Software Architecture</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 text-xs font-mono tracking-wider uppercase text-gray-300">
+                <a href="#about" class="hover:text-brand-cyan transition-colors flex items-center gap-1"><span class="text-brand-cyan">//</span> Sobre Mí</a>
+                <a href="#services" class="hover:text-brand-cyan transition-colors flex items-center gap-1"><span class="text-brand-cyan">//</span> Servicios</a>
+                <a href="#skills" class="hover:text-brand-cyan transition-colors flex items-center gap-1"><span class="text-brand-cyan">//</span> Stack</a>
+                <a href="#projects" class="hover:text-brand-cyan transition-colors flex items-center gap-1"><span class="text-brand-cyan">//</span> Proyectos</a>
+            </nav>
+
+            <!-- Quick Action Buttons -->
+            <div class="hidden md:flex items-center gap-3">
+                <button onclick="toggleBusinessCardModal()" class="px-4 py-2 text-xs font-mono font-semibold rounded-md bg-white/5 hover:bg-white/10 border border-brand-border text-white transition flex items-center gap-2">
+                    <i data-lucide="qr-code" class="w-4 h-4 text-brand-cyan"></i>
+                    vCard
+                </button>
+                <a href="https://wa.me/573014295058?text=Hola%20Camilo%20Castell,%20vi%20tu%20portafolio%20y%20me%20gustaría%20cotizar%20un%20proyecto." target="_blank" class="px-4 py-2 text-xs font-mono font-bold rounded-md bg-gradient-brand text-white shadow-lg shadow-brand-cyan/20 hover:opacity-90 transition flex items-center gap-2 uppercase tracking-wider">
+                    <i data-lucide="message-square" class="w-4 h-4"></i>
+                    WhatsApp
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg bg-white/5 text-gray-300 hover:text-white border border-brand-border" aria-label="Abrir Menú">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden md:hidden glass-panel border-b border-brand-border px-4 pt-2 pb-6 space-y-3 font-mono text-sm">
+            <a href="#about" onclick="closeMobileMenu()" class="block py-2 text-gray-300 hover:text-brand-cyan">// Sobre Mí</a>
+            <a href="#services" onclick="closeMobileMenu()" class="block py-2 text-gray-300 hover:text-brand-cyan">// Servicios</a>
+            <a href="#skills" onclick="closeMobileMenu()" class="block py-2 text-gray-300 hover:text-brand-cyan">// Stack</a>
+            <a href="#projects" onclick="closeMobileMenu()" class="block py-2 text-gray-300 hover:text-brand-cyan">// Proyectos</a>
+            <div class="pt-4 flex flex-col gap-2">
+                <button onclick="toggleBusinessCardModal(); closeMobileMenu()" class="w-full py-2.5 text-center text-xs font-mono rounded-md bg-white/5 border border-brand-border text-white flex items-center justify-center gap-2">
+                    <i data-lucide="qr-code" class="w-4 h-4 text-brand-cyan"></i>
+                    Ver Tarjeta vCard
+                </button>
+                <a href="https://wa.me/573014295058?text=Hola%20Camilo%20Castell,%20vi%20tu%20portafolio%20y%20me%20gustaría%20cotizar%20un%20proyecto." target="_blank" class="w-full py-2.5 text-center text-xs font-mono font-bold rounded-md bg-gradient-brand text-white flex items-center justify-center gap-2 uppercase tracking-wider">
+                    <i data-lucide="message-square" class="w-4 h-4"></i>
+                    Escribir por WhatsApp
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24 py-12">
+
+        <!-- Hero Section -->
+        <section class="pt-6 sm:pt-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <div class="lg:col-span-7 space-y-6">
+                <!-- Status Badge -->
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-emerald/10 border border-brand-emerald/40 text-brand-emerald text-xs font-mono">
+                    <span class="w-2 h-2 rounded-full bg-brand-emerald animate-pulse"></span>
+                    <span>SYSTEM.ONLINE // Disponible para Proyectos Freelance</span>
+                </div>
+
+                <!-- Main Title & Tagline -->
+                <h1 class="font-display text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                    Camilo Castell <br>
+                    <span class="text-gradient">Software Architecture & Web Engineering</span>
+                </h1>
+
+                <p class="text-base text-gray-400 max-w-2xl leading-relaxed font-sans">
+                    Desarrollador de software enfocado en la construcción de sistemas ágiles, plataformas de gestión a medida e interfaces minimalistas con estética cyberpunk. Soluciones robustas, limpias y eficientes.
+                </p>
+
+                <!-- Quick Stats Pill Bar -->
+                <div class="grid grid-cols-3 gap-4 pt-2 max-w-lg font-mono">
+                    <div class="p-3 rounded-lg glass-card text-center cyber-corner">
+                        <span class="block text-xl font-bold text-brand-cyan">100%</span>
+                        <span class="text-[10px] text-gray-400 uppercase tracking-wider">A Medida</span>
+                    </div>
+                    <div class="p-3 rounded-lg glass-card text-center cyber-corner">
+                        <span class="block text-xl font-bold text-brand-violet">CLEAN</span>
+                        <span class="text-[10px] text-gray-400 uppercase tracking-wider">Código Minimal</span>
+                    </div>
+                    <div class="p-3 rounded-lg glass-card text-center cyber-corner">
+                        <span class="block text-xl font-bold text-brand-emerald">FAST</span>
+                        <span class="text-[10px] text-gray-400 uppercase tracking-wider">Alto Rendimiento</span>
+                    </div>
+                </div>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-wrap items-center gap-4 pt-4 font-mono">
+                    <a href="https://wa.me/573014295058?text=Hola%20Camilo%20Castell,%20me%20gustaría%20consultar%20por%20un%20proyecto." target="_blank" class="px-6 py-3 rounded-md bg-gradient-brand text-white font-bold text-xs tracking-wider uppercase shadow-lg shadow-brand-cyan/20 hover:scale-[1.02] transition-all flex items-center gap-2">
+                        <i data-lucide="phone-call" class="w-4 h-4"></i>
+                        Contactar WhatsApp
+                    </a>
+
+                    <button onclick="copyToClipboard('militocastell@gmail.com', 'Correo copiado: militocastell@gmail.com')" class="px-6 py-3 rounded-md bg-white/5 hover:bg-white/10 border border-brand-border text-white font-semibold text-xs tracking-wider uppercase transition-all flex items-center gap-2">
+                        <i data-lucide="mail" class="w-4 h-4 text-brand-cyan"></i>
+                        Copiar Correo
+                    </button>
+
+                    <button onclick="toggleBusinessCardModal()" class="px-4 py-3 rounded-md border border-brand-cyan/40 bg-brand-cyan/10 hover:bg-brand-cyan/20 text-brand-cyan font-semibold text-xs tracking-wider uppercase transition-all flex items-center gap-2">
+                        <i data-lucide="vcard" class="w-4 h-4"></i>
+                        Tarjeta
+                    </button>
+                </div>
+            </div>
+
+            <!-- Hero Interactive Terminal Visual -->
+            <div class="lg:col-span-5 relative flex justify-center">
+                <div class="w-full max-w-md glass-panel p-6 rounded-2xl border border-brand-border shadow-2xl animate-float relative overflow-hidden cyber-corner">
+                    
+                    <div class="flex items-center justify-between pb-4 border-b border-brand-border">
+                        <div class="flex items-center gap-3">
+                            <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                            <div class="w-3 h-3 rounded-full bg-emerald-500/80"></div>
+                            <span class="text-xs font-mono text-gray-400 ml-2">camilo_castell.config.js</span>
+                        </div>
+                        <span class="inline-flex px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-brand-cyan/10 text-brand-cyan border border-brand-cyan/30">ONLINE</span>
+                    </div>
+
+                    <!-- Code Terminal snippet -->
+                    <div class="my-5 p-4 rounded-lg bg-black/80 font-mono text-xs text-gray-300 space-y-2 border border-white/5 leading-relaxed">
+                        <p class="text-gray-500">// Developer Profile</p>
+                        <p><span class="text-brand-violet">const</span> <span class="text-brand-cyan">developer</span> = {</p>
+                        <p class="pl-4"><span class="text-brand-emerald">name</span>: <span class="text-amber-300">'Camilo Castell'</span>,</p>
+                        <p class="pl-4"><span class="text-brand-emerald">contact</span>: <span class="text-amber-300">'3014295058'</span>,</p>
+                        <p class="pl-4"><span class="text-brand-emerald">email</span>: <span class="text-amber-300">'militocastell@gmail.com'</span>,</p>
+                        <p class="pl-4"><span class="text-brand-emerald">specialty</span>: [<span class="text-amber-300">'Software'</span>, <span class="text-amber-300">'Web'</span>, <span class="text-amber-300">'Sistemas Gestor'</span>],</p>
+                        <p class="pl-4"><span class="text-brand-emerald">style</span>: <span class="text-amber-300">'Cyberpunk Minimalist'</span></p>
+                        <p>};</p>
+                    </div>
+
+                    <div class="flex items-center justify-between pt-2 text-xs font-mono">
+                        <span class="text-gray-400 flex items-center gap-1">
+                            <i data-lucide="terminal" class="w-3.5 h-3.5 text-brand-cyan"></i> CLI / Full Stack
+                        </span>
+                        <button onclick="copyToClipboard('militocastell@gmail.com', 'militocastell@gmail.com copiado')" class="text-brand-cyan hover:underline flex items-center gap-1">
+                            <i data-lucide="copy" class="w-3.5 h-3.5"></i> militocastell@gmail.com
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Services Section -->
+        <section id="about" class="space-y-10">
+            <div class="text-center max-w-3xl mx-auto space-y-3">
+                <h2 class="text-xs font-mono font-bold uppercase tracking-widest text-brand-cyan">// Servicios y Especialidades</h2>
+                <p class="font-display text-3xl font-bold text-white">Desarrollo Tecnológico Minimalista & Funcional</p>
+                <p class="text-gray-400 text-sm">Construcción de herramientas digitales enfocadas en resolver necesidades operativas complejas con una interfaz limpia y futurista.</p>
+            </div>
+
+            <div id="services" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Service 1 -->
+                <div class="glass-card p-6 rounded-xl cyber-corner">
+                    <div class="w-12 h-12 rounded-lg bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center text-brand-cyan mb-4">
+                        <i data-lucide="cpu" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-white mb-2">Sistemas de Gestión a Medida</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed mb-4">
+                        Desarrollo de software optimizado para talleres de mantenimiento, historias clínicas, agendas de citas y control operativo.
+                    </p>
+                    <ul class="space-y-2 text-xs text-gray-300 font-mono">
+                        <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-brand-cyan"></i> Control de inventarios y órdenes</li>
+                        <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-brand-cyan"></i> Agendamiento y seguimiento</li>
+                        <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-brand-cyan"></i> Paneles de analítica centralizada</li>
+                    </ul>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="glass-card p-6 rounded-xl cyber-corner">
+                    <div class="w-12 h-12 rounded-lg bg-brand-violet/20 border border-brand-violet/40 flex items-center justify-center text-brand-violet mb-4">
+                        <i data-lucide="code-2" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-white mb-2">Desarrollo Web & APIs</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed mb-4">
+                        Interfaces de usuario ultrarrápidas, diseño cyber-minimalista y backend seguro estructurado para alto tráfico.
+                    </p>
+                    <ul class="space-y-2 text-xs text-gray-300 font-mono">
+                        <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-brand-violet"></i> Aplicaciones Web (SPA)</li>
+                        <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-brand-violet"></i> Integración de REST APIs</li>
+                        <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-brand-violet"></i> Bases de Datos SQL / NoSQL</li>
+                    </ul>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="glass-card p-6 rounded-xl cyber-corner">
+                    <div class="w-12 h-12 rounded-lg bg-brand-emerald/10 border border-brand-emerald/30 flex items-center justify-center text-brand-emerald mb-4">
+                        <i data-lucide="terminal" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-white mb-2">Soluciones Integrales Freelance</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed mb-4">
+                        Acompañamiento completo desde la arquitectura del proyecto hasta la puesta en producción y mantenimiento técnico.
+                    </p>
+                    <ul class="space-y-2 text-xs text-gray-300 font-mono">
+                        <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-brand-emerald"></i> Automatización de procesos</li>
+                        <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-brand-emerald"></i> Despliegue en la nube</li>
+                        <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-brand-emerald"></i> Consultoría de arquitectura</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Tech Stack Section -->
+        <section id="skills" class="space-y-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-brand-border pb-4">
+                <div>
+                    <h2 class="text-xs font-mono font-bold uppercase tracking-widest text-brand-cyan">// Tech Stack</h2>
+                    <p class="font-display text-3xl font-bold text-white">Lenguajes & Herramientas</p>
+                </div>
+                <!-- Skill Category Filter Tabs -->
+                <div id="skillTabs" class="flex flex-wrap gap-2 font-mono text-xs">
+                    <button onclick="filterSkills('all')" class="skill-tab active px-3 py-1.5 rounded bg-brand-cyan text-black font-bold transition">Todos</button>
+                    <button onclick="filterSkills('frontend')" class="skill-tab px-3 py-1.5 rounded bg-white/5 hover:bg-white/10 text-gray-300 border border-brand-border transition">Frontend</button>
+                    <button onclick="filterSkills('backend')" class="skill-tab px-3 py-1.5 rounded bg-white/5 hover:bg-white/10 text-gray-300 border border-brand-border transition">Backend & DB</button>
+                    <button onclick="filterSkills('tools')" class="skill-tab px-3 py-1.5 rounded bg-white/5 hover:bg-white/10 text-gray-300 border border-brand-border transition">Herramientas</button>
+                </div>
+            </div>
+
+            <!-- Skills Grid -->
+            <div id="skillsGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                <div class="skill-item frontend glass-card p-4 rounded-lg flex flex-col items-center justify-center text-center gap-2">
+                    <i data-lucide="file-code" class="w-7 h-7 text-amber-400"></i>
+                    <span class="text-xs font-mono text-white">JavaScript</span>
+                </div>
+                <div class="skill-item frontend glass-card p-4 rounded-lg flex flex-col items-center justify-center text-center gap-2">
+                    <i data-lucide="atom" class="w-7 h-7 text-brand-cyan"></i>
+                    <span class="text-xs font-mono text-white">React.js</span>
+                </div>
+                <div class="skill-item frontend glass-card p-4 rounded-lg flex flex-col items-center justify-center text-center gap-2">
+                    <i data-lucide="palette" class="w-7 h-7 text-teal-300"></i>
+                    <span class="text-xs font-mono text-white">Tailwind CSS</span>
+                </div>
+                <div class="skill-item backend glass-card p-4 rounded-lg flex flex-col items-center justify-center text-center gap-2">
+                    <i data-lucide="terminal" class="w-7 h-7 text-blue-400"></i>
+                    <span class="text-xs font-mono text-white">Python</span>
+                </div>
+                <div class="skill-item backend glass-card p-4 rounded-lg flex flex-col items-center justify-center text-center gap-2">
+                    <i data-lucide="database" class="w-7 h-7 text-indigo-400"></i>
+                    <span class="text-xs font-mono text-white">SQL / PostgreSQL</span>
+                </div>
+                <div class="skill-item tools glass-card p-4 rounded-lg flex flex-col items-center justify-center text-center gap-2">
+                    <i data-lucide="git-branch" class="w-7 h-7 text-orange-500"></i>
+                    <span class="text-xs font-mono text-white">Git / GitHub</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="space-y-8">
+            <div class="border-b border-brand-border pb-4">
+                <h2 class="text-xs font-mono font-bold uppercase tracking-widest text-brand-cyan">// Portafolio de Software</h2>
+                <p class="font-display text-3xl font-bold text-white">Proyectos Destacados</p>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Project 1: sg-soltecma -->
+                <div class="glass-card rounded-xl overflow-hidden flex flex-col justify-between group cyber-corner">
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between font-mono">
+                            <span class="px-2.5 py-0.5 rounded bg-brand-cyan/10 text-brand-cyan text-[10px] font-bold border border-brand-cyan/30">SG-SOLTECMA</span>
+                            <i data-lucide="cpu" class="w-4 h-4 text-brand-cyan"></i>
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-white group-hover:text-brand-cyan transition">sg-soltecma</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed font-sans">
+                            Ecosistema de soluciones tecnológicas integradas. Plataforma base para desarrollo, gestión de servicios digitales e infraestructura de software.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 font-mono text-[10px]">
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-gray-300 border border-white/10">Architecture</span>
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-gray-300 border border-white/10">Web Suite</span>
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-gray-300 border border-white/10">Core</span>
+                        </div>
+                    </div>
+                    <div class="px-6 py-4 border-t border-brand-border bg-black/40 flex items-center justify-between font-mono">
+                        <button onclick="showProjectModal('sg-soltecma', 'Ecosistema de soluciones tecnológicas diseñado para centralizar desarrollos web, gestión de clientes y servicios digitales de alto rendimiento.', ['Arquitectura Web', 'Core Services', 'JavaScript', 'APIs'])" class="text-xs text-brand-cyan font-semibold hover:underline flex items-center gap-1">
+                            Ver detalles <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 2: sg-vetcode -->
+                <div class="glass-card rounded-xl overflow-hidden flex flex-col justify-between group cyber-corner">
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between font-mono">
+                            <span class="px-2.5 py-0.5 rounded bg-brand-emerald/10 text-brand-emerald text-[10px] font-bold border border-brand-emerald/30">SG-VETCODE</span>
+                            <i data-lucide="activity" class="w-4 h-4 text-brand-emerald"></i>
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-white group-hover:text-brand-emerald transition">sg-vetcode</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed font-sans">
+                            Sistema de gestión integral para veterinarias: agendamiento de citas, control de historias clínicas digitales, pacientes y recordatorios automáticos.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 font-mono text-[10px]">
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-gray-300 border border-white/10">Historia Clínica</span>
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-gray-300 border border-white/10">Citas</span>
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-gray-300 border border-white/10">Control Médico</span>
+                        </div>
+                    </div>
+                    <div class="px-6 py-4 border-t border-brand-border bg-black/40 flex items-center justify-between font-mono">
+                        <button onclick="showProjectModal('sg-vetcode', 'Software completo de gestión clínica veterinaria. Incluye módulos para expedientes médicos digitales, programación de citas, control de tratamientos y administración de pacientes.', ['Gestión Médica', 'Citas y Agenda', 'Historia Clínica', 'Base de Datos'])" class="text-xs text-brand-emerald font-semibold hover:underline flex items-center gap-1">
+                            Ver detalles <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 3: sg-alqmac -->
+                <div class="glass-card rounded-xl overflow-hidden flex flex-col justify-between group cyber-corner">
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between font-mono">
+                            <span class="px-2.5 py-0.5 rounded bg-brand-violet/20 text-brand-violet text-[10px] font-bold border border-brand-violet/40">SG-ALQMAC</span>
+                            <i data-lucide="wrench" class="w-4 h-4 text-brand-violet"></i>
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-white group-hover:text-brand-violet transition">sg-alqmac</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed font-sans">
+                            Proyecto de gestión para taller de reparación y mantenimiento de maquinaria. Control de órdenes de servicio, piezas y diagnósticos técnicos.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 font-mono text-[10px]">
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-gray-300 border border-white/10">Taller & Maquinaria</span>
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-gray-300 border border-white/10">Órdenes Trabajo</span>
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-gray-300 border border-white/10">Repuestos</span>
+                        </div>
+                    </div>
+                    <div class="px-6 py-4 border-t border-brand-border bg-black/40 flex items-center justify-between font-mono">
+                        <button onclick="showProjectModal('sg-alqmac', 'Plataforma especializada en la gestión operativa de talleres de reparación de maquinaria. Administra inventario de repuestos, estados de reparación, costos y entregas.', ['Gestión Taller', 'Mantenimiento', 'Inventarios', 'SQL / Backend'])" class="text-xs text-brand-violet font-semibold hover:underline flex items-center gap-1">
+                            Ver detalles <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Digital Card Modal Preview Trigger Banner -->
+        <section id="card" class="glass-panel p-8 rounded-2xl border border-brand-border relative overflow-hidden cyber-corner">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                <div class="md:col-span-8 space-y-2">
+                    <h3 class="text-xs font-mono text-brand-cyan uppercase tracking-widest">// vCard Interactiva</h3>
+                    <h2 class="font-display text-2xl font-bold text-white">Tarjeta Digital Profesional</h2>
+                    <p class="text-sm text-gray-400 font-sans">Accede a los datos de contacto directo de Camilo Castell en formato QR o guárdalos en tu agenda.</p>
+                </div>
+                <div class="md:col-span-4 flex justify-end">
+                    <button onclick="toggleBusinessCardModal()" class="w-full md:w-auto px-6 py-3 rounded-md bg-gradient-brand text-white font-mono font-bold text-xs tracking-wider uppercase shadow-lg shadow-brand-cyan/20 hover:scale-105 transition">
+                        Abrir Tarjeta Digital
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-brand-border bg-black/60 py-8 relative z-10 font-mono text-xs text-gray-500">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>© 2026 Camilo Castell. Cyberpunk Minimalist Architecture.</p>
+            <p class="text-brand-cyan">contacto: militocastell@gmail.com | 3014295058</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Business Card Modal -->
+    <div id="vcardModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="w-full max-w-sm glass-panel p-6 rounded-2xl border border-brand-cyan/40 relative shadow-2xl cyber-corner">
+            <button onclick="toggleBusinessCardModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white font-mono">✕</button>
+            
+            <div class="text-center space-y-4">
+                <div class="w-16 h-16 mx-auto rounded-full bg-gradient-brand p-0.5">
+                    <div class="w-full h-full bg-brand-dark rounded-full flex items-center justify-center">
+                        <i data-lucide="user" class="w-8 h-8 text-brand-cyan"></i>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-display font-bold text-xl text-white">Camilo Castell</h3>
+                    <p class="text-xs font-mono text-brand-cyan">Software & Web Developer</p>
+                </div>
+
+                <!-- QR Code Holder -->
+                <div class="bg-white p-3 rounded-lg inline-block mx-auto border border-brand-cyan/30">
+                    <div id="qrcode"></div>
+                </div>
+
+                <div class="space-y-1.5 text-xs font-mono text-gray-300">
+                    <p class="flex items-center justify-center gap-2"><i data-lucide="phone" class="w-3.5 h-3.5 text-brand-cyan"></i> 3014295058</p>
+                    <p class="flex items-center justify-center gap-2"><i data-lucide="mail" class="w-3.5 h-3.5 text-brand-cyan"></i> militocastell@gmail.com</p>
+                </div>
+
+                <div class="pt-2 flex gap-2 font-mono">
+                    <a href="https://wa.me/573014295058" target="_blank" class="flex-1 py-2 rounded bg-gradient-brand text-white font-bold text-xs uppercase tracking-wider">WhatsApp</a>
+                    <button onclick="toggleBusinessCardModal()" class="px-4 py-2 rounded bg-white/10 text-white font-bold text-xs uppercase">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Generic Project Details Modal -->
+    <div id="projectModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="w-full max-w-md glass-panel p-6 rounded-2xl border border-brand-border relative shadow-2xl cyber-corner font-mono space-y-4">
+            <button onclick="closeProjectModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">✕</button>
+            
+            <h3 id="modalProjectTitle" class="font-display font-bold text-xl text-brand-cyan"></h3>
+            <p id="modalProjectDesc" class="text-xs font-sans text-gray-300 leading-relaxed"></p>
+            
+            <div>
+                <span class="text-[10px] text-gray-400 uppercase tracking-widest block mb-2">// Módulos & Tecnologías</span>
+                <div id="modalProjectTags" class="flex flex-wrap gap-1.5 text-[10px]"></div>
+            </div>
+
+            <div class="pt-4 border-t border-brand-border flex justify-end">
+                <button onclick="closeProjectModal()" class="px-4 py-1.5 rounded bg-brand-cyan text-black font-bold text-xs uppercase">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        function closeMobileMenu() {
+            mobileMenu.classList.add('hidden');
+        }
+
+        // Skills Filter
+        function filterSkills(category) {
+            const items = document.querySelectorAll('.skill-item');
+            const tabs = document.querySelectorAll('.skill-tab');
+
+            tabs.forEach(tab => {
+                tab.classList.remove('bg-brand-cyan', 'text-black', 'font-bold');
+                tab.classList.add('bg-white/5', 'text-gray-300');
+            });
+
+            event.target.classList.remove('bg-white/5', 'text-gray-300');
+            event.target.classList.add('bg-brand-cyan', 'text-black', 'font-bold');
+
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Copy Helper
+        function copyToClipboard(text, msg) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert(msg);
+            });
+        }
+
+        // Modals Logic
+        function toggleBusinessCardModal() {
+            const modal = document.getElementById('vcardModal');
+            modal.classList.toggle('hidden');
+            if (!modal.classList.contains('hidden') && document.getElementById('qrcode').children.length === 0) {
+                new QRCode(document.getElementById("qrcode"), {
+                    text: "BEGIN:VCARD\nVERSION:3.0\nN:Castell;Camilo;;;\nFN:Camilo Castell\nTEL;TYPE=CELL:3014295058\nEMAIL:militocastell@gmail.com\nEND:VCARD",
+                    width: 128,
+                    height: 128
+                });
+            }
+        }
+
+        function showProjectModal(title, desc, tags) {
+            document.getElementById('modalProjectTitle').innerText = title;
+            document.getElementById('modalProjectDesc').innerText = desc;
+            
+            const tagsContainer = document.getElementById('modalProjectTags');
+            tagsContainer.innerHTML = '';
+            tags.forEach(t => {
+                const tag = document.createElement('span');
+                tag.className = 'px-2 py-0.5 rounded bg-brand-cyan/10 text-brand-cyan border border-brand-cyan/30';
+                tag.innerText = t;
+                tagsContainer.appendChild(tag);
+            });
+
+            document.getElementById('projectModal').classList.remove('hidden');
+        }
+
+        function closeProjectModal() {
+            document.getElementById('projectModal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
